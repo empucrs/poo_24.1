@@ -2,10 +2,18 @@ public class Veiculo{
     private final double consumoPorLitro = 10;
     private Placa placa;
     private double combustivel;
+    private double capacidadeMaximaDeCombustivel;
     
-    public Veiculo(Placa placa){
-        this.placa = placa;
+    public Veiculo(Placa placa, double capacidadeMaximaEmLitros){
+        if(placa != null)
+            this.placa = new Placa(placa.getPais(), placa.getCodigo());        
+
         combustivel = 0;
+        
+        if(capacidadeMaximaEmLitros<=0)
+            capacidadeMaximaDeCombustivel=55;
+        else
+            capacidadeMaximaDeCombustivel=capacidadeMaximaEmLitros;
     }
 
     public void setPais(String pais){
@@ -22,7 +30,10 @@ public class Veiculo{
 
     public double abastece(double litros){
         if (litros > 0.0){
-            combustivel += litros;
+            if(combustivel+litros>=capacidadeMaximaDeCombustivel)
+                combustivel = capacidadeMaximaDeCombustivel;
+            else
+                combustivel += litros;
         }
         return combustivel;
     }
