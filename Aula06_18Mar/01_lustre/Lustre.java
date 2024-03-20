@@ -12,7 +12,7 @@ public class Lustre {
         ls = new Lampada[nLampadas];
         queimada=new boolean[nLampadas];
         for(int i=0; i<nLampadas; i++){
-          ls[i]=new Lampada();
+          ls[i]=new Lampada();  
           queimada[i]=false;
         }
     }
